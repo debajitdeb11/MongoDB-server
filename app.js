@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 require("dotenv").config();
 
@@ -17,17 +18,14 @@ const authRoutes = require("./routes/authentication");
 app.use("/api", authRoutes);
 
 mongoose
-	.connect(process.env.DATABASE)
-	.then(() =>
-		console.log("Database is successfully connected!", {
-			useNewUrlParser: true,
-			useUnifiedTopology: true,
-			connectTimeoutMS: 15000,
-			useCreateIndex: true,
-		})
-	)
+	.connect(process.env.DATABASE, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		connectTimeoutMS: 15000,
+	})
+	.then(() => console.log("Database is successfully connected!"))
 	.catch((err) => {
-		console.error("Failed to connect to the database!");
+		console.error("Failed to connect to the database!", err.message);
 	});
 
 app.get("/", (req, res) => {
