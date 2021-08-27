@@ -13,9 +13,11 @@ app.use(cookieParser());
 
 // Routes
 const authRoutes = require("./routes/authentication");
+const userRoutes = require("./routes/user");
 
 // Custom Routes
 app.use("/api", authRoutes);
+app.use("/api", userRoutes);
 
 mongoose
 	.connect(process.env.DATABASE, {

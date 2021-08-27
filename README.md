@@ -9,3 +9,7 @@ https://turnkey-db.herokuapp.com/api/signin
 ## SIGN UP
 
 https://turnkey-db.herokuapp.com/api/signup
+
+## GET USER INFO (Bearer Token Needed!)
+
+https://turnkey-db.herokuapp.com/api/user/:userId
